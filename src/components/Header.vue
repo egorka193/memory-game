@@ -6,10 +6,9 @@
     </div>
     <div class="score__wrapper">
       <button
-        @click="showSettings" 
         class="settings"
-      >
-      </button>
+        @click="showSettings" 
+      ></button>
       <div class="header__score">
         <p>Score: {{ score }}</p>
         <p>Best score: {{ bestScore }}</p>
@@ -20,24 +19,24 @@
 
 
 <script>
-  export default{
-    props: {
-      score: {
-        type: Number,
-        required: true
-      },
-      bestScore: {
-        type: Number,
-        required: true
-      }
+export default{
+  props: {
+    score: {
+      type: Number,
+      required: true
     },
-    emits: [ 'showSettings'],
-    methods: {
-      showSettings(){
-        this.$emit('showSettings')
-      },
+    bestScore: {
+      type: Number,
+      required: true
     }
+  },
+  emits: ['showSettings'],
+  methods: {
+    showSettings(){
+      this.$emit('showSettings')
+    },
   }
+}
 </script>
 
 
@@ -74,5 +73,3 @@
   gap: 10px;
 }
 </style>
-⚙	2699	GEAR
-⛭	26ED	GEAR WITHOUT HUB
