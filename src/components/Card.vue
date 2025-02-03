@@ -2,7 +2,7 @@
   <div
     class="card"
     @click="chooseCard"
-   >
+  >
     <img :src="value.url" alt="">
     <p class="card__text">{{ value.name }}</p>
   </div>   
@@ -12,8 +12,6 @@
 
 
 <script>
-
-
 export default {
   props:{
     value: {

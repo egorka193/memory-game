@@ -3,24 +3,36 @@
     :score="selectedCards.length"
     :bestScore="bestScore"
     @finishTheGame="gameOver"
+    @showSettings="showSettings"
   />
   <p class="message">
     {{ massage }}
   </p>
+  <div
+    v-if="setting"
+    id="overlay"
+    @click="closeSettings"
+  >
+  </div>
+  <Settings 
+    :setting="setting"
+    @closeSettings="closeSettings"
+    @giveUP="gameOver"
+  />
   <Hero 
     :ways="ways"
     @rememberCard="addCard"
   />
-  <p>{{ selectedCards }}</p>
 </template>
 
 
 <script>
 import Header from './components/Header.vue'
 import Hero from './components/Hero.vue'
+import Settings from './components/Settings.vue'
 
 export default {
-  components: {Header, Hero},
+  components: {Header, Hero, Settings},
   data(){
     return{
       ways: [
@@ -75,7 +87,8 @@ export default {
       ],
       selectedCards: [],
       bestScore: 0,
-      massage: ''
+      massage: '',
+      setting: true
     }
   },
   methods: {
@@ -91,6 +104,7 @@ export default {
     },
     gameOver() {
       this.ways.sort(() => Math.random() - 0.5);
+      this.setting = false
       if(this.selectedCards.length > this.bestScore){
         this.bestScore = this.selectedCards.length
         this.massage = 'HEY, BRO, NICE TRY'
@@ -100,6 +114,12 @@ export default {
       }
       this.selectedCards = []
     },
+    showSettings(){
+      this.setting = true
+    },
+    closeSettings(){
+      this.setting = false
+    }
   }
 }
 </script>
@@ -111,5 +131,18 @@ export default {
   justify-content: center;
   font-size: 30px;
   color: rgb(209, 157, 3);
+}
+#overlay {
+  position: fixed; 
+  display: block; 
+  width: 100%; 
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+  z-index: 1; 
+  cursor: pointer;
 }
 </style>
