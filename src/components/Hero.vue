@@ -1,7 +1,7 @@
 <template>
   <div class="cards">
     <Card 
-      v-for="(el, i) in ways"
+      v-for="(el, i) in sortedWays"
       :key="i"
       :value="el"
       @chooseCard="(value) => rememberCard(value)"
@@ -17,6 +17,19 @@ import Card from './Card.vue'
 
 export default {
   components: { Card, },
+  data(){
+    return{
+      sortedWays: []
+    }
+  },
+  watch: {
+    ways: {
+      handler(newNal) {
+        this.sortedWays = newNal
+      },
+      immediate: true
+    }
+  },
   props: {
     ways: {
       type: Array,
@@ -26,9 +39,15 @@ export default {
   emits: ['rememberCard'],
   methods: {
     rememberCard(value){
+      this.shuffleWays()
       console.log(value);
       this.$emit('rememberCard', value)
     },
+    shuffleWays(){
+      const cloneWays = [...this.ways]
+      cloneWays.sort(() => Math.random() - 0.5);
+      this.sortedWays = cloneWays
+    }
   }
 }
 </script>

@@ -6,62 +6,86 @@
     @showSettings="showSettings"
   />
   <Hero 
-    :ways="ways"
+    :ways="currentCollection"
     @rememberCard="addCard"
   />
   <Settings 
-    :setting="setting"
+    v-if="setting"
+    :massage="massage"
     @closeSettings="closeSettings"
     @giveUP="gameOver"
+    @apply="changeCollection"
+  />
+  <EndGame
+    v-if="endGame"
+    :massage="massage"
+    :selectedCards="selectedCards"
+    :ways="currentCollection"
+    @closeFinish="closeFinish"
+    @restart="restart"
   />
 </template>
 
 
 <script>
+import EndGame from './components/EndGame.vue';
 import Header from './components/Header.vue'
 import Hero from './components/Hero.vue'
 import Settings from './components/Settings.vue'
-import { getAnimeCollection } from './data/cards.js'
+import { getAllCollection } from './data/cards.js'
 
 export default {
-  components: {Header, Hero, Settings},
+  components: {Header, Hero, Settings, EndGame},
   data(){
     return{
-      ways: getAnimeCollection(),
+      collections: getAllCollection(),
       selectedCards: [],
       bestScore: 0,
-      massage: '',
-      setting: false
+      setting: false,
+      endGame: false,
+      currentCollectionName: 'Anime'
     }
+  },
+  computed: {
+    currentCollection(){
+      return this.collections[this.currentCollectionName]
+    },
   },
   methods: {
     addCard(value){
-      this.massage = ''
       if(!this.selectedCards.includes(value)){
         this.selectedCards.push(value);
-        this.ways.sort(() => Math.random() - 0.5);
       } else {
         this.gameOver()
       }
       console.log(value);
     },
     gameOver() {
-      this.ways.sort(() => Math.random() - 0.5);
+      this.endGame = true
       this.setting = false
       if(this.selectedCards.length > this.bestScore){
         this.bestScore = this.selectedCards.length
-        this.massage = 'HEY, BRO, NICE TRY'
       }
-      if(this.selectedCards.length < this.bestScore){
-        this.massage = 'HEY, BRO, BAD TRY '
-      }
-      this.selectedCards = []
+    },
+    changeCollection(value){
+      this.currentCollectionName = value
+      console.log(this.cardCollectionName);
+      this.setting = false
+      this.bestScore = 0
     },
     showSettings(){
       this.setting = true
     },
     closeSettings(){
       this.setting = false
+    },
+    closeFinish(){
+      this.endGame = false
+      this.selectedCards = []
+    },
+    restart(){
+      this.endGame = false
+      this.selectedCards = []
     }
   }
 }

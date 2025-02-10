@@ -64,5 +64,139 @@ export const getAnimeCollection = () => {
 }
 
 export const getDotaCollection = () => {
-  return []
+  return [
+    {
+      id: 1,
+      url: 'src/img/dota/Abaddon.webp',
+      name: 'Abaddon',
+    },
+    {
+      id: 2,
+      url: 'src/img/dota/brood_mother.webp',
+      name: 'brood_mother',
+    },
+    {
+      id: 3,
+      url: 'src/img/dota/crystal_maiden.webp',
+      name: 'crystal_maiden',
+    },
+    {
+      id: 4,
+      url: 'src/img/dota/invoker.jpg',
+      name: 'invoker',
+    },
+    {
+      id: 5,
+      url: 'src/img/dota/juggernaut.webp',
+      name: 'juggernaut',
+    },
+    {
+      id: 6,
+      url: 'src/img/dota/phantom_assasin.jpg',
+      name: 'phantom_assasin',
+    },
+    {
+      id: 7,
+      url: 'src/img/dota/pudge.jpg',
+      name: 'pudge',
+    },
+    {
+      id: 8,
+      url: 'src/img/dota/shacker.webp',
+      name: 'shacker',
+    },
+    {
+      id: 9,
+      url: 'src/img/dota/Shadow_Fiend.webp',
+      name: 'Shadow_Fiend',
+    },
+    {
+      id: 10,
+      url: 'src/img/dota/stalker.webp',
+      name: 'stalker',
+    },
+    {
+      id: 11,
+      url: 'src/img/dota/undyind.webp',
+      name: 'undyind',
+    },
+    {
+      id: 12,
+      url: 'src/img/dota/ursa_warrior.gif',
+      name: 'ursa_warrior',
+    },
+  ]
+}
+
+export const getSerialsCollection = () => {
+  return [
+    {
+      id: 1,
+      url: 'src/img/serials/arcane.jpg',
+      name: 'arcane',
+    },
+    {
+      id: 2,
+      url: 'src/img/serials/death_note.webp',
+      name: 'death note',
+    },
+    {
+      id: 3,
+      url: 'src/img/serials/flash.jpg',
+      name: 'flash',
+    },
+    {
+      id: 4,
+      url: 'src/img/serials/game_of_trones.webp',
+      name: 'game of trones',
+    },
+    {
+      id: 5,
+      url: 'src/img/serials/happy.webp',
+      name: 'happy together',
+    },
+    {
+      id: 6,
+      url: 'src/img/serials/lucifer.jpg',
+      name: 'lucifer',
+    },
+    {
+      id: 7,
+      url: 'src/img/serials/walking_dead.avif',
+      name: 'walking dead',
+    },
+    {
+      id: 8,
+      url: 'src/img/serials/naruto.jpg',
+      name: 'naruto',
+    },
+    {
+      id: 9,
+      url: 'src/img/serials/penguin.png',
+      name: 'penguin',
+    },
+    {
+      id: 10,
+      url: 'src/img/serials/pokemon.webp',
+      name: 'pokemon',
+    },
+    {
+      id: 11,
+      url: 'src/img/serials/rick-morty.jpg',
+      name: 'rick and morty',
+    },
+    {
+      id: 12,
+      url: 'src/img/serials/supernatural.jpeg',
+      name: 'supernatural',
+    },
+  ]
+}
+
+export const getAllCollection = () => {
+  return {
+    Anime: getAnimeCollection(),
+    Dota: getDotaCollection(),
+    Series: getSerialsCollection(),
+  }
 }
