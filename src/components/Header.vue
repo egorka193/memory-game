@@ -66,10 +66,10 @@ export default{
   background-color: transparent;
   border: none;
   display: flex;
-  margin-bottom: 75px;
 }
 .header-right{
   display: flex;
   gap: 10px;
+  align-items: flex-start;
 }
 </style>

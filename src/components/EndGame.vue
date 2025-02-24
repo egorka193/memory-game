@@ -44,7 +44,7 @@ export default {
       }
     }
   },
-  emits:['closeFinish', 'restart'],
+  emits:['restart'],
   methods:{
     restart(){
       this.$emit('restart')
