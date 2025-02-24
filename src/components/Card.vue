@@ -6,8 +6,6 @@
     <img :src="value.url" alt="">
     <p class="card__text">{{ value.name }}</p>
   </div>   
-
-
 </template>
 
 
@@ -22,7 +20,6 @@ export default {
   emits: ['chooseCard'],
   methods: {
     chooseCard(){
-      console.log(this.value.url);
       this.$emit('chooseCard', this.value.url)
     }
   }
@@ -31,7 +28,7 @@ export default {
 
 
 <style scoped>
-img{
+.card img{
   width: 250px;
   height: 250px;
   border-radius: 10px;

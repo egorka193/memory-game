@@ -5,8 +5,8 @@
     @close="closeSettings"
   >
     <div class="setting__menu">
-      <div class="menu__item">
-        <div class="menu__item-finish">
+      <div class="setting__menu-item">
+        <div>
           <button 
             class="button"
             @click="giveUP"
@@ -15,11 +15,11 @@
           </button>
         </div>
       </div>
-      <div class="menu__item">
-        <div class="collection-selector__label">
+      <div class="setting__menu-item">
+        <div class="setting__menu-title">
           You can select another collection of cards:
         </div>
-        <div class="custom-select">
+        <div class="setting__menu-select">
           <select v-model="value">
             <option value="Anime">Anime</option>
             <option value="Dota">Dota heroes</option>
@@ -43,19 +43,19 @@ import Modal from './Modal.vue';
 
 export default {
   components: { Modal },
-  data(){
-    return{
-      // value: 'kub'
-    }
-  },
   props:{
     massage:{
       type: String,
       required: true
     },
-    setting: {
-      type: Boolean,
+    currentCollectionName:{
+      type: String,
       required: true
+    }
+  },
+  data(){
+    return{
+      value: this.currentCollectionName
     }
   },
   emits:['closeSettings', 'giveUP', 'apply'],
@@ -67,7 +67,6 @@ export default {
       this.$emit('giveUP')
     },
     apply(){
-      console.log(this.value);
       this.$emit('apply', this.value)
     },
   }
@@ -76,7 +75,7 @@ export default {
 
 
 <style scoped>
-.menu__item{
+.setting__menu-item{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,17 +83,17 @@ export default {
   flex-wrap: wrap;
   gap: 20px;
 }
-.collection-selector__label{
+.setting__menu-title{
   font-weight: 600;
   color: rgb(215, 181, 80);
   font-size: 20px;
   margin-bottom: 5px;
 }
-.custom-select{
+.setting__menu-select{
   min-width: 100px;
   position: relative;
 }
-.custom-select select{
+.setting__menu-select select{
   appearance: none;
   width: 100%;
   font-size: 14px;
@@ -105,8 +104,8 @@ export default {
   color: rgb(215, 181, 80);
   cursor: pointer;
 }
-.custom-select::before,
-.custom-select::after {
+.setting__menu-select::before,
+.setting__menu-select::after {
   --size: 0.3rem;
   position: absolute;
   content: "";
@@ -114,14 +113,14 @@ export default {
   pointer-events: none;
 }
 
-.custom-select::before {
+.setting__menu-select::before {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-bottom: var(--size) solid rgb(215, 181, 80);
   top: 35%;
 }
 
-.custom-select::after {
+.setting__menu-select::after {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-top: var(--size) solid rgb(215, 181, 80);

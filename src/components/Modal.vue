@@ -61,4 +61,23 @@ export default{
   z-index: 1; 
   cursor: pointer;
 }
+.modal__top-title {
+    margin: 10px;
+    color: rgb(215, 181, 80);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+.modal__top-cross {
+    cursor: pointer;
+    color: black;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.modal__top-cross:hover{
+    transition: all 0.5s ease;
+    color: aliceblue;
+  }
 </style>

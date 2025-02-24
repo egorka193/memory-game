@@ -2,15 +2,15 @@
   <Header 
     :score="selectedCards.length"
     :bestScore="bestScore"
-    @finishTheGame="gameOver"
     @showSettings="showSettings"
   />
   <Hero 
-    :ways="currentCollection"
+    :collection="currentCollection"
     @rememberCard="addCard"
   />
   <Settings 
     v-if="setting"
+    :currentCollectionName="currentCollectionName"
     :massage="massage"
     @closeSettings="closeSettings"
     @giveUP="gameOver"
@@ -18,9 +18,8 @@
   />
   <EndGame
     v-if="endGame"
-    :massage="massage"
     :selectedCards="selectedCards"
-    :ways="currentCollection"
+    :collectionLength="currentCollection.length"
     @closeFinish="closeFinish"
     @restart="restart"
   />
@@ -58,7 +57,6 @@ export default {
       } else {
         this.gameOver()
       }
-      console.log(value);
     },
     gameOver() {
       this.endGame = true
@@ -69,7 +67,6 @@ export default {
     },
     changeCollection(value){
       this.currentCollectionName = value
-      console.log(this.cardCollectionName);
       this.setting = false
       this.bestScore = 0
     },
@@ -78,10 +75,6 @@ export default {
     },
     closeSettings(){
       this.setting = false
-    },
-    closeFinish(){
-      this.endGame = false
-      this.selectedCards = []
     },
     restart(){
       this.endGame = false
@@ -93,10 +86,4 @@ export default {
 
 
 <style scoped>
-.message{
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  color: rgb(209, 157, 3);
-}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <Modal
-    :title="showMassage"
-    @close="closeFinish"
+    :title="modalTitle"
+    @close="restart"
   >
     <div class="finish">
       <p class="finish__score">{{ count }}</p>
@@ -22,30 +22,21 @@ import Modal from './Modal.vue';
 
 export default {
   components:{ Modal },
-  // data(){
-  //   return{
-  //     massage: '',
-  //   }
-  // },
   props:{
     selectedCards: {
       type: Array,
       required: true
     },
-    endGame: {
-      type: Boolean,
-      required: true
-    },
-    ways: {
-      type: Array,
+    collectionLength: {
+      type: Number,
       required: true
     }
   },
   computed:{
     count(){
-      return `${this.selectedCards.length}/${this.ways.length}`
+      return `${this.selectedCards.length}/${this.collectionLength}`
     },
-    showMassage(){
+    modalTitle(){
       if(this.selectedCards.length === 12){
         return 'YOU WIN'
       } else {
@@ -55,9 +46,6 @@ export default {
   },
   emits:['closeFinish', 'restart'],
   methods:{
-    closeFinish(){
-      this.$emit('closeFinish')
-    },
     restart(){
       this.$emit('restart')
     },

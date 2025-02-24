@@ -1,17 +1,17 @@
 <template>
   <header class="header">
-    <div class="">
+    <div class="header-left">
       <h2 class="header__title">Anime Memory Game</h2>
       <p class="header__text">Get points by clicking on an image but don't click on any more than once!</p>
     </div>
-    <div class="score__wrapper">
+    <div class="header-right">
       <button
-        class="settings"
+        class="header__settings-btn"
         @click="showSettings" 
       ></button>
       <div class="header__score">
-        <p>Score: {{ score }}</p>
-        <p>Best score: {{ bestScore }}</p>
+        <div>Score: {{ score }}</div>
+        <div>Best score: {{ bestScore }}</div>
       </div>
     </div>
   </header>
@@ -45,8 +45,7 @@ export default{
   display: flex;
   justify-content: space-between;
   color: rgb(209, 157, 3);
-  padding: 5px;
-  margin: 10px;
+  padding: 15px;
 }
 .header__title{
   font-size: 44px;
@@ -57,18 +56,19 @@ export default{
   margin-top: 30px;
   font-weight: 800;
 }
-.settings::after{
+.header__settings-btn::after{
   content: '\2699';
   color: rgb(209, 157, 3);
   cursor: pointer;
 }
-.settings{
+.header__settings-btn{
   font-size: 40px;
   background-color: transparent;
   border: none;
   display: flex;
+  height: 0;
 }
-.score__wrapper{
+.header-right{
   display: flex;
   gap: 10px;
 }

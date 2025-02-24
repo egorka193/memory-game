@@ -17,38 +17,37 @@ import Card from './Card.vue'
 
 export default {
   components: { Card, },
+  props: {
+    collection: {
+      type: Array,
+      required: true
+    }
+  },
   data(){
     return{
       sortedWays: []
-    }
-  },
-  watch: {
-    ways: {
-      handler(newNal) {
-        this.sortedWays = newNal
-      },
-      immediate: true
-    }
-  },
-  props: {
-    ways: {
-      type: Array,
-      required: true
     }
   },
   emits: ['rememberCard'],
   methods: {
     rememberCard(value){
       this.shuffleWays()
-      console.log(value);
       this.$emit('rememberCard', value)
     },
     shuffleWays(){
-      const cloneWays = [...this.ways]
+      const cloneWays = [...this.collection]
       cloneWays.sort(() => Math.random() - 0.5);
       this.sortedWays = cloneWays
     }
-  }
+  },
+  watch: {
+    collection: {
+      handler(newNal) {
+        this.sortedWays = newNal
+      },
+      immediate: true
+    }
+  },
 }
 </script>
 
