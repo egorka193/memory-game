@@ -20,7 +20,6 @@
     v-if="endGame"
     :selectedCards="selectedCards"
     :collectionLength="currentCollection.length"
-    @closeFinish="closeFinish"
     @restart="restart"
   />
 </template>

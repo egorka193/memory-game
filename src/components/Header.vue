@@ -66,7 +66,7 @@ export default{
   background-color: transparent;
   border: none;
   display: flex;
-  height: 0;
+  margin-bottom: 75px;
 }
 .header-right{
   display: flex;

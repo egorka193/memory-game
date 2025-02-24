@@ -4,8 +4,8 @@
     title="Settings"
     @close="closeSettings"
   >
-    <div class="setting__menu">
-      <div class="setting__menu-item">
+    <div class="setting-menu">
+      <div class="setting-menu__item">
         <div>
           <button 
             class="button"
@@ -15,11 +15,11 @@
           </button>
         </div>
       </div>
-      <div class="setting__menu-item">
-        <div class="setting__menu-title">
+      <div class="setting-menu__item">
+        <div class="setting-menu__title">
           You can select another collection of cards:
         </div>
-        <div class="setting__menu-select">
+        <div class="setting-menu__select">
           <select v-model="value">
             <option value="Anime">Anime</option>
             <option value="Dota">Dota heroes</option>
@@ -75,7 +75,7 @@ export default {
 
 
 <style scoped>
-.setting__menu-item{
+.setting-menu__item{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,17 +83,17 @@ export default {
   flex-wrap: wrap;
   gap: 20px;
 }
-.setting__menu-title{
+.setting-menu__title{
   font-weight: 600;
   color: rgb(215, 181, 80);
   font-size: 20px;
   margin-bottom: 5px;
 }
-.setting__menu-select{
+.setting-menu__select{
   min-width: 100px;
   position: relative;
 }
-.setting__menu-select select{
+.setting-menu__select select{
   appearance: none;
   width: 100%;
   font-size: 14px;
@@ -104,8 +104,8 @@ export default {
   color: rgb(215, 181, 80);
   cursor: pointer;
 }
-.setting__menu-select::before,
-.setting__menu-select::after {
+.setting-menu__select::before,
+.setting-menu__select::after {
   --size: 0.3rem;
   position: absolute;
   content: "";
@@ -113,14 +113,14 @@ export default {
   pointer-events: none;
 }
 
-.setting__menu-select::before {
+.setting-menu__select::before {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-bottom: var(--size) solid rgb(215, 181, 80);
   top: 35%;
 }
 
-.setting__menu-select::after {
+.setting-menu__select::after {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-top: var(--size) solid rgb(215, 181, 80);
