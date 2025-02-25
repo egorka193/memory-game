@@ -193,10 +193,20 @@ export const getSerialsCollection = () => {
   ]
 }
 
+export const ANIME = 'anime'
+export const DOTA = 'dota'
+export const SERIES = 'series'
+
+export const collectionLabel = {
+  [ANIME]: 'Anime',
+  [DOTA]: 'Dota',
+  [SERIES]: 'Series',
+}
+
 export const getAllCollection = () => {
   return {
-    Anime: getAnimeCollection(),
-    Dota: getDotaCollection(),
-    Series: getSerialsCollection(),
+    [ANIME]: getAnimeCollection(),
+    [DOTA]: getDotaCollection(),
+    [SERIES]: getSerialsCollection(),
   }
 }
