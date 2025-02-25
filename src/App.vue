@@ -30,7 +30,7 @@ import EndGame from './components/EndGame.vue';
 import Header from './components/Header.vue'
 import Hero from './components/Hero.vue'
 import Settings from './components/Settings.vue'
-import { getAllCollection } from './data/cards.js'
+import { getAllCollection, ANIME } from './data/cards.js'
 
 export default {
   components: {Header, Hero, Settings, EndGame},
@@ -41,7 +41,7 @@ export default {
       bestScore: 0,
       setting: false,
       endGame: false,
-      currentCollectionName: 'Anime'
+      currentCollectionName: ANIME
     }
   },
   computed: {
