@@ -1,14 +1,14 @@
 
 <template>
-<div class="setting-menu__select">
-  <select v-model="value">
-    <option
-      v-for="option in collection"
-      :key="option.value"
-      :value="option.value"
-    >{{ option.label }}</option>
-  </select>
-</div>
+  <div class="setting-menu__select">
+    <select v-model="value">
+      <option
+        v-for="option in collection"
+        :key="option.value"
+        :value="option.value"
+      >{{ option.label }}</option>
+    </select>
+  </div>
   <button
     class="button"
     @click="apply"
@@ -16,7 +16,6 @@
     Apply
   </button>
 </template>
-
 
 <script>
 import {collectionLabel} from "../data/cards.js";
@@ -52,7 +51,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .setting-menu__select{
   min-width: 100px;
@@ -77,19 +75,16 @@ export default {
   right: 5px;
   pointer-events: none;
 }
-
 .setting-menu__select::before {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-bottom: var(--size) solid rgb(215, 181, 80);
   top: 35%;
 }
-
 .setting-menu__select::after {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-top: var(--size) solid rgb(215, 181, 80);
   top: 60%;
 }
-
 </style>
