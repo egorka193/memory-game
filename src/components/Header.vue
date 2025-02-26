@@ -1,14 +1,18 @@
 <template>
   <header class="header">
     <div class="header-left">
-      <h2 class="header__title">Anime Memory Game</h2>
-      <p class="header__text">Get points by clicking on an image but don't click on any more than once!</p>
+      <h2 class="header__title">
+        Anime Memory Game
+      </h2>
+      <p class="header__text">
+        Get points by clicking on an image but don't click on any more than once!
+      </p>
     </div>
     <div class="header-right">
       <button
         class="header__settings-btn"
-        @click="showSettings" 
-      ></button>
+        @click="showSettings"
+      />
       <div class="header__score">
         <div>Score: {{ score }}</div>
         <div>Best score: {{ bestScore }}</div>
@@ -17,28 +21,26 @@
   </header>
 </template>
 
-
 <script>
-export default{
+export default {
   props: {
     score: {
       type: Number,
-      required: true
+      required: true,
     },
     bestScore: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   emits: ['showSettings'],
   methods: {
-    showSettings(){
-      this.$emit('showSettings')
+    showSettings() {
+      this.$emit('showSettings');
     },
-  }
-}
+  },
+};
 </script>
-
 
 <style scoped>
 .header{
