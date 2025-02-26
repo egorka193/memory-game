@@ -1,4 +1,3 @@
-
 <template>
   <Modal
     title="Settings"
@@ -7,7 +6,7 @@
     <div class="setting-menu">
       <div class="setting-menu__item">
         <div>
-          <button 
+          <button
             class="button"
             @click="giveUP"
           >
@@ -19,59 +18,63 @@
         <div class="setting-menu__title">
           You can select another collection of cards:
         </div>
-        <Select 
-          :currentCollectionName="currentCollectionName"
-          @apply="apply"
+        <Select
+          :value="collectionName"
+          :options="collection"
+          @update="changeValue"
         />
+        <button
+          class="button"
+          @click="apply"
+        >
+          Apply
+        </button>
       </div>
     </div>
   </Modal>
 </template>
 
-
 <script>
 import Modal from './Modal.vue';
 import Select from './Select.vue';
-import {collectionLabel} from "../data/cards.js";
+// eslint-disable-next-line import/extensions
+import { collectionLabel } from '../data/cards.js';
 
 export default {
+  // eslint-disable-next-line vue/no-reserved-component-names
   components: { Modal, Select },
-  props:{
-    massage:{
+  props: {
+    currentCollectionName: {
       type: String,
-      required: true
+      required: true,
     },
-    currentCollectionName:{
-      type: String,
-      required: true
-    }
   },
-  data(){
-    return{
-      value: this.currentCollectionName,
-      collection: Object.keys(collectionLabel).map((item) => {
-        return {
-          value: item,
-          label: collectionLabel[item]
-        }
-      })
-    }
+  emits: ['closeSettings', 'giveUP', 'apply'],
+  data() {
+    return {
+      collectionName: this.currentCollectionName,
+      collection: Object.keys(collectionLabel).map((item) => ({
+        value: item,
+        label: collectionLabel[item],
+      })),
+    };
   },
-  emits:['closeSettings', 'giveUP', 'apply'],
-  methods:{
-    closeSettings(){
-      this.$emit('closeSettings')
+  methods: {
+    closeSettings() {
+      this.$emit('closeSettings');
     },
-    giveUP(){
-      this.$emit('giveUP')
+    giveUP() {
+      this.$emit('giveUP');
     },
-    apply(value){
-      this.$emit('apply', value)
+    apply() {
+      this.$emit('apply', this.value);
     },
-  }
-}
+    changeValue(value) {
+      this.value = value;
+    },
+  },
+};
 </script>
-
 
 <style>
 .setting-menu__item{

@@ -1,17 +1,16 @@
 <template>
-  <Header 
+  <Header
     :score="selectedCards.length"
     :bestScore="bestScore"
     @showSettings="showSettings"
   />
-  <Hero 
+  <Hero
     :collection="currentCollection"
     @rememberCard="addCard"
   />
-  <Settings 
+  <Settings
     v-if="setting"
     :currentCollectionName="currentCollectionName"
-    :massage="massage"
     @closeSettings="closeSettings"
     @giveUP="gameOver"
     @apply="changeCollection"
@@ -24,65 +23,68 @@
   />
 </template>
 
-
 <script>
 import EndGame from './components/EndGame.vue';
-import Header from './components/Header.vue'
-import Hero from './components/Hero.vue'
-import Settings from './components/Settings.vue'
-import { getAllCollection, ANIME } from './data/cards.js'
+import Header from './components/Header.vue';
+import Hero from './components/Hero.vue';
+import Settings from './components/Settings.vue';
+// eslint-disable-next-line import/extensions
+import { getAllCollection, ANIME } from './data/cards.js';
 
 export default {
-  components: {Header, Hero, Settings, EndGame},
-  data(){
-    return{
+  // eslint-disable-next-line vue/no-reserved-component-names
+  components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Header, Hero, Settings, EndGame,
+  },
+  data() {
+    return {
       collections: getAllCollection(),
       selectedCards: [],
       bestScore: 0,
       setting: false,
       endGame: false,
-      currentCollectionName: ANIME
-    }
+      currentCollectionName: ANIME,
+    };
   },
   computed: {
-    currentCollection(){
-      return this.collections[this.currentCollectionName]
+    currentCollection() {
+      return this.collections[this.currentCollectionName];
     },
   },
   methods: {
-    addCard(value){
-      if(!this.selectedCards.includes(value)){
+    addCard(value) {
+      if (!this.selectedCards.includes(value)) {
         this.selectedCards.push(value);
       } else {
-        this.gameOver()
+        this.gameOver();
       }
     },
     gameOver() {
-      this.endGame = true
-      this.setting = false
-      if(this.selectedCards.length > this.bestScore){
-        this.bestScore = this.selectedCards.length
+      this.endGame = true;
+      this.setting = false;
+      if (this.selectedCards.length > this.bestScore) {
+        this.bestScore = this.selectedCards.length;
       }
     },
-    changeCollection(value){
-      this.currentCollectionName = value
-      this.setting = false
-      this.bestScore = 0
+    changeCollection(value) {
+      this.currentCollectionName = value;
+      this.setting = false;
+      this.bestScore = 0;
     },
-    showSettings(){
-      this.setting = true
+    showSettings() {
+      this.setting = true;
     },
-    closeSettings(){
-      this.setting = false
+    closeSettings() {
+      this.setting = false;
     },
-    restart(){
-      this.endGame = false
-      this.selectedCards = []
-    }
-  }
-}
+    restart() {
+      this.endGame = false;
+      this.selectedCards = [];
+    },
+  },
+};
 </script>
-
 
 <style scoped>
 </style>

@@ -4,28 +4,28 @@
     @click="chooseCard"
   >
     <img :src="value.url" alt="">
-    <p class="card__text">{{ value.name }}</p>
-  </div>   
+    <p class="card__text">
+      {{ value.name }}
+    </p>
+  </div>
 </template>
-
 
 <script>
 export default {
-  props:{
+  props: {
     value: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   emits: ['chooseCard'],
   methods: {
-    chooseCard(){
-      this.$emit('chooseCard', this.value.url)
-    }
-  }
-}
+    chooseCard() {
+      this.$emit('chooseCard', this.value.url);
+    },
+  },
+};
 </script>
-
 
 <style scoped>
 .card img{

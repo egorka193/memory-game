@@ -1,54 +1,34 @@
-
 <template>
   <div class="setting-menu__select">
-    <select v-model="value">
+    <select
+      :value="value"
+      @input="$emit('update', $event.target.value)"
+    >
       <option
-        v-for="option in collection"
+        v-for="option in options"
         :key="option.value"
         :value="option.value"
-      >{{ option.label }}</option>
+      >
+        {{ option.label }}
+      </option>
     </select>
   </div>
-  <button
-    class="button"
-    @click="apply"
-  >
-    Apply
-  </button>
 </template>
 
 <script>
-import {collectionLabel} from "../data/cards.js";
-
 export default {
-  props:{
-    massage:{
+  props: {
+    value: {
       type: String,
-      required: true
+      required: true,
     },
-    currentCollectionName:{
-      type: String,
-      required: true
-    }
-  },
-  data(){
-    return{
-      value: this.currentCollectionName,
-      collection: Object.keys(collectionLabel).map((item) => {
-        return {
-          value: item,
-          label: collectionLabel[item]
-        }
-      })
-    }
-  },
-  emits:['apply'],
-   methods:{
-    apply(){
-      this.$emit('apply', this.value)
+    options: {
+      type: Array,
+      required: true,
     },
-  }
-}
+  },
+  emits: ['update'],
+};
 </script>
 
 <style scoped>

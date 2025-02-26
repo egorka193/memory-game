@@ -1,56 +1,52 @@
 <template>
   <div class="cards">
-    <Card 
+    <Card
       v-for="(el, i) in sortedWays"
       :key="i"
       :value="el"
       @chooseCard="(value) => rememberCard(value)"
     />
   </div>
-
-  
 </template>
 
-
 <script>
-import Card from './Card.vue'
+import Card from './Card.vue';
 
 export default {
-  components: { Card, },
+  components: { Card },
   props: {
     collection: {
       type: Array,
-      required: true
-    }
-  },
-  data(){
-    return{
-      sortedWays: []
-    }
+      required: true,
+    },
   },
   emits: ['rememberCard'],
-  methods: {
-    rememberCard(value){
-      this.shuffleWays()
-      this.$emit('rememberCard', value)
-    },
-    shuffleWays(){
-      const cloneWays = [...this.collection]
-      cloneWays.sort(() => Math.random() - 0.5);
-      this.sortedWays = cloneWays
-    }
+  data() {
+    return {
+      sortedWays: [],
+    };
   },
   watch: {
     collection: {
       handler(newNal) {
-        this.sortedWays = newNal
+        this.sortedWays = newNal;
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
-}
+  methods: {
+    rememberCard(value) {
+      this.shuffleWays();
+      this.$emit('rememberCard', value);
+    },
+    shuffleWays() {
+      const cloneWays = [...this.collection];
+      cloneWays.sort(() => Math.random() - 0.5);
+      this.sortedWays = cloneWays;
+    },
+  },
+};
 </script>
-
 
 <style scoped>
 .cards{

@@ -1,12 +1,14 @@
 <template>
   <div class="modal">
-    <div 
+    <div
       class="overlay"
       @click="close"
-    ></div>
+    />
     <div class="modal-content">
       <div class="modal__top">
-        <h3 class="modal__top-title">{{title}}</h3>
+        <h3 class="modal__top-title">
+          {{ title }}
+        </h3>
         <div
           class="modal__top-cross"
           @click="close"
@@ -14,28 +16,28 @@
           &#10006;
         </div>
       </div>
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-export default{
+export default {
   props: {
     title: {
       type: String,
-      required: true
-    }
-  },
-  emits:['close'],
-  methods:{
-    close(){
-      this.$emit('close')
+      required: true,
     },
-  }
-}
+  },
+  emits: ['close'],
+  methods: {
+    close() {
+      this.$emit('close');
+    },
+  },
+};
 </script>
-  
+
 <style>
 .modal-content{
   background-color: rgb(107 169 7);
@@ -49,16 +51,16 @@ export default{
 }
 
 .overlay {
-  position: fixed; 
-  display: block; 
-  width: 100%; 
-  height: 100%; 
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5); 
-  z-index: 1; 
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
   cursor: pointer;
 }
 .modal__top-title {
