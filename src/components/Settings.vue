@@ -19,7 +19,7 @@
           You can select another collection of cards:
         </div>
         <Select
-          :value="collectionName"
+          :value="currentCollectionName"
           :options="collection"
           @update="changeValue"
         />
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Modal from './Modal.vue';
 import Select from './Select.vue';
 // eslint-disable-next-line import/extensions
@@ -43,16 +44,9 @@ import { collectionLabel } from '../data/cards.js';
 export default {
   // eslint-disable-next-line vue/no-reserved-component-names
   components: { Modal, Select },
-  props: {
-    currentCollectionName: {
-      type: String,
-      required: true,
-    },
-  },
-  emits: ['closeSettings', 'giveUP', 'apply'],
+  emits: ['closeSettings', 'restart', 'apply'],
   data() {
     return {
-      collectionName: this.currentCollectionName,
       collection: Object.keys(collectionLabel).map((item) => ({
         value: item,
         label: collectionLabel[item],
@@ -60,14 +54,18 @@ export default {
     };
   },
   methods: {
-    closeSettings() {
-      this.$emit('closeSettings');
-    },
-    giveUP() {
-      this.$emit('giveUP');
-    },
+    ...mapActions(['closeSettings', 'giveUP']),
+    // closeSettings() {
+    //   this.$emit('closeSettings');
+    // },
+    // giveUP() {
+    //   this.$emit('giveUP');
+    // },
+    // apply() {
+    //   this.$emit('apply', this.value);
+    // },
     apply() {
-      this.$emit('apply', this.value);
+      this.$store.dispatch('apply', this.value);
     },
     changeValue(value) {
       this.value = value;
