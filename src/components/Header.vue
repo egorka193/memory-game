@@ -22,22 +22,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-  props: {
-    score: {
-      type: Number,
-      required: true,
+  emits: ['showSettings'],
+  computed: {
+    score() {
+      return this.$store.state.selectedCards.length;
     },
-    bestScore: {
-      type: Number,
-      required: true,
+    bestScore() {
+      return this.$store.state.bestScore;
     },
   },
-  emits: ['showSettings'],
   methods: {
-    showSettings() {
-      this.$emit('showSettings');
-    },
+    ...mapActions(['showSettings']),
   },
 };
 </script>
