@@ -8,7 +8,7 @@
         {{ count }}
       </p>
       <button
-        class="button"
+        class="button finish__btn"
         @click="restart"
       >
         RESTART
@@ -22,13 +22,6 @@ import Modal from './Modal.vue';
 
 export default {
   components: { Modal },
-  props: {
-    collectionLength: {
-      type: Number,
-      required: true,
-    },
-  },
-  emits: ['restart'],
   computed: {
     selectedCards() {
       return this.$store.state.selectedCards.length;
@@ -55,15 +48,7 @@ export default {
 </script>
 
 <style scoped>
-.finish__title{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  color: rgb(215, 181, 80);
-  font-weight: 600;
-  margin: 10px;
-}
-.button{
+.finish__btn{
   display: block;
   margin: 10px auto;
   cursor: pointer;
@@ -75,13 +60,6 @@ export default {
   font-weight: 600;
   margin: 10px;
   font-size: 32px;
-}
-.finish__cross{
-  cursor: pointer;
-  color: black;
-  position: absolute;
-  right: 20px;
-  top: 10px;
 }
 .finish__cross:hover{
   transition: all 0.5s ease;

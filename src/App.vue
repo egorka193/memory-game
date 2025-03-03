@@ -16,7 +16,6 @@ import Hero from './components/Hero.vue';
 import Settings from './components/Settings.vue';
 
 export default {
-  // eslint-disable-next-line vue/no-reserved-component-names
   components: {
     // eslint-disable-next-line vue/no-reserved-component-names
     Header, Hero, Settings, EndGame,

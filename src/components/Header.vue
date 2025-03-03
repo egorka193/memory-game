@@ -25,7 +25,6 @@
 import { mapActions } from 'vuex';
 
 export default {
-  emits: ['showSettings'],
   computed: {
     score() {
       return this.$store.state.selectedCards.length;

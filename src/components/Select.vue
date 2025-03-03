@@ -1,7 +1,7 @@
 <template>
   <div class="setting-menu__select">
     <select
-      :value="currentCollectionName"
+      :value="value"
       @input="$emit('update', $event.target.value)"
     >
       <option
@@ -22,13 +22,12 @@ export default {
       type: Array,
       required: true,
     },
-  },
-  emits: ['update'],
-  computed: {
-    currentCollectionName() {
-      return this.$store.state.currentCollectionName;
+    value: {
+      type: String,
+      required: true,
     },
   },
+  emits: ['update'],
 };
 </script>
 

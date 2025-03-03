@@ -14,7 +14,6 @@ import Card from './Card.vue';
 
 export default {
   components: { Card },
-  emits: ['rememberCard'],
   data() {
     return {
       sortedWays: [],

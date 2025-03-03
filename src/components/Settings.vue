@@ -38,8 +38,7 @@
 import { mapActions } from 'vuex';
 import Modal from './Modal.vue';
 import Select from './Select.vue';
-// eslint-disable-next-line import/extensions
-import { collectionLabel } from '../data/cards.js';
+import { collectionLabel } from '../data/cards';
 
 export default {
   // eslint-disable-next-line vue/no-reserved-component-names
@@ -53,17 +52,13 @@ export default {
       })),
     };
   },
+  computed: {
+    currentCollectionName() {
+      return this.$store.state.currentCollectionName;
+    },
+  },
   methods: {
     ...mapActions(['closeSettings', 'giveUP']),
-    // closeSettings() {
-    //   this.$emit('closeSettings');
-    // },
-    // giveUP() {
-    //   this.$emit('giveUP');
-    // },
-    // apply() {
-    //   this.$emit('apply', this.value);
-    // },
     apply() {
       this.$store.dispatch('apply', this.value);
     },

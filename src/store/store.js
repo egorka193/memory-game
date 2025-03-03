@@ -18,65 +18,60 @@ export default createStore({
     },
   },
   mutations: {
-    showSettings(state) {
-      state.setting = true;
+    setEndGame(state, payload) {
+      state.endGame = payload;
     },
-    addTask(state, payload) {
-      if (!state.selectedCards.includes(payload)) {
-        state.selectedCards.push(payload);
-      } else {
-        state.endGame = true;
-        state.setting = false;
-        if (state.selectedCards.length > state.bestScore) {
-          state.bestScore = state.selectedCards.length;
-        }
-      }
+    setSettings(state, payload) {
+      state.setting = payload;
     },
-    gameOver(state) {
-      state.endGame = true;
-      state.setting = false;
-      if (state.selectedCards.length > state.bestScore) {
-        state.bestScore = state.selectedCards.length;
-      }
+    addSelectedCard(state, payload) {
+      state.selectedCards.push(payload);
+    },
+    setBestScore(state) {
+      state.bestScore = state.selectedCards.length;
     },
     changeCollection(state, payload) {
       state.currentCollectionName = payload;
-      state.setting = false;
+      state.selectedCards.length = 0;
       state.bestScore = 0;
     },
-    closeSettings(state) {
-      state.setting = false;
-    },
-    restart(state) {
-      state.setting = false;
-      state.endGame = false;
+    clearSelectedCards(state) {
       state.selectedCards = [];
     },
   },
   actions: {
     showSettings(context) {
-      context.commit('showSettings');
-    },
-    rememberCard(context, payload) {
-      context.commit('addTask', payload);
+      context.commit('setSettings', true);
     },
     closeSettings(context) {
-      context.commit('closeSettings');
+      context.commit('setSettings', false);
+    },
+    rememberCard(context, payload) {
+      if (!context.state.selectedCards.includes(payload)) {
+        context.commit('addSelectedCard', payload);
+      } else {
+        if (context.state.selectedCards.length > context.state.bestScore) {
+          context.commit('setBestScore');
+        }
+        context.commit('setEndGame', true);
+        context.commit('setSettings', false);
+      }
     },
     changeCollection(context, payload) {
       context.commit('changeCollection', payload);
     },
-    gameOver(context) {
-      context.commit('gameOver');
-    },
     restart(context) {
-      context.commit('restart');
+      context.commit('setEndGame', false);
+      context.commit('clearSelectedCards');
+      context.commit('setSettings', false);
     },
     giveUP(context) {
-      context.commit('gameOver');
+      context.commit('setEndGame', true);
+      context.commit('setSettings', false);
     },
     apply(context, payload) {
       context.commit('changeCollection', payload);
+      context.commit('setSettings', false);
     },
   },
 });
