@@ -1,14 +1,11 @@
-# memory card
+# Memory card game
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is build to practise with Vue 3
 
-## Recommended IDE Setup
+## Branches
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+Main - In main branch you can find the final game.
+Add-vuex - In this branch you can same game realisation, but with Vuex store
 
 ## Project Setup
 
