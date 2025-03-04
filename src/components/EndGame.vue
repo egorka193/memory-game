@@ -15,44 +15,42 @@
   </Modal>
 </template>
 
-
 <script>
 import Modal from './Modal.vue';
 
-
 export default {
-  components:{ Modal },
-  props:{
+  components: { Modal },
+  props: {
     selectedCards: {
       type: Array,
-      required: true
+      required: true,
     },
     collectionLength: {
       type: Number,
-      required: true
-    }
-  },
-  computed:{
-    count(){
-      return `${this.selectedCards.length}/${this.collectionLength}`
+      required: true,
     },
-    modalTitle(){
-      if(this.selectedCards.length === 12){
-        return 'YOU WIN'
+  },
+  emits: ['restart'],
+  computed: {
+    count() {
+      return `${this.selectedCards.length}/${this.collectionLength}`;
+    },
+    modalTitle() {
+      if (this.selectedCards.length === 12) {
+        return 'YOU WIN';
+      // eslint-disable-next-line no-else-return
       } else {
-        return 'NICE TRY'
+        return 'NICE TRY';
       }
-    }
-  },
-  emits:['restart'],
-  methods:{
-    restart(){
-      this.$emit('restart')
     },
-  }
-}
+  },
+  methods: {
+    restart() {
+      this.$emit('restart');
+    },
+  },
+};
 </script>
-
 
 <style scoped>
 .finish__title{
