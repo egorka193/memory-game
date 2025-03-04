@@ -29,7 +29,7 @@ import Header from './components/Header.vue';
 import Hero from './components/Hero.vue';
 import Settings from './components/Settings.vue';
 // eslint-disable-next-line import/extensions
-import { getAllCollection, ANIME } from './data/cards.js';
+import { getAllCollection, DOTA } from './data/cards.js';
 
 export default {
   // eslint-disable-next-line vue/no-reserved-component-names
@@ -44,7 +44,7 @@ export default {
       bestScore: 0,
       setting: false,
       endGame: false,
-      currentCollectionName: ANIME,
+      currentCollectionName: DOTA,
     };
   },
   computed: {

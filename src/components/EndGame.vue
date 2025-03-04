@@ -4,7 +4,9 @@
     @close="restart"
   >
     <div class="finish">
-      <p class="finish__score">{{ count }}</p>
+      <p class="finish__score">
+        {{ count }}
+      </p>
       <button
         class="button"
         @click="restart"
@@ -15,44 +17,40 @@
   </Modal>
 </template>
 
-
 <script>
 import Modal from './Modal.vue';
 
-
 export default {
-  components:{ Modal },
-  props:{
+  components: { Modal },
+  props: {
     selectedCards: {
       type: Array,
-      required: true
+      required: true,
     },
     collectionLength: {
       type: Number,
-      required: true
-    }
-  },
-  computed:{
-    count(){
-      return `${this.selectedCards.length}/${this.collectionLength}`
+      required: true,
     },
-    modalTitle(){
-      if(this.selectedCards.length === 12){
-        return 'YOU WIN'
-      } else {
-        return 'NICE TRY'
+  },
+  emits: ['restart'],
+  computed: {
+    count() {
+      return `${this.selectedCards.length}/${this.collectionLength}`;
+    },
+    modalTitle() {
+      if (this.selectedCards.length === 12) {
+        return 'YOU WIN';
       }
-    }
-  },
-  emits:['restart'],
-  methods:{
-    restart(){
-      this.$emit('restart')
+      return 'NICE TRY';
     },
-  }
-}
+  },
+  methods: {
+    restart() {
+      this.$emit('restart');
+    },
+  },
+};
 </script>
-
 
 <style scoped>
 .finish__title{

@@ -3,7 +3,7 @@
     class="card"
     @click="chooseCard"
   >
-    <img :src="value.url" alt="">
+    <img :src="value.url">
     <p class="card__text">
       {{ value.name }}
     </p>
