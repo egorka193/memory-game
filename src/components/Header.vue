@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-left">
       <h2 class="header__title">
-        Anime Memory Game
+        Memory Game
       </h2>
       <p class="header__text">
         Get points by clicking on an image but don't click on any more than once!
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line import/no-unresolved
 import { mapActions } from 'vuex';
 
 export default {

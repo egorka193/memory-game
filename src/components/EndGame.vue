@@ -35,8 +35,10 @@ export default {
     modalTitle() {
       if (this.selectedCards.length === 12) {
         return 'YOU WIN';
+      // eslint-disable-next-line no-else-return
+      } else {
+        return 'NICE TRY';
       }
-      return 'NICE TRY';
     },
   },
   methods: {

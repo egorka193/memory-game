@@ -35,6 +35,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line import/no-unresolved
 import { mapActions } from 'vuex';
 import Modal from './Modal.vue';
 import Select from './Select.vue';
