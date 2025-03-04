@@ -4,7 +4,9 @@
     @close="restart"
   >
     <div class="finish">
-      <p class="finish__score">{{ count }}</p>
+      <p class="finish__score">
+        {{ count }}
+      </p>
       <button
         class="button"
         @click="restart"
