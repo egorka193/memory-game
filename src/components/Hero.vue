@@ -14,17 +14,15 @@ import Card from './Card.vue';
 
 export default {
   components: { Card },
-  props: {
-    collection: {
-      type: Array,
-      required: true,
-    },
-  },
-  emits: ['rememberCard'],
   data() {
     return {
       sortedWays: [],
     };
+  },
+  computed: {
+    collection() {
+      return this.$store.getters.currentCollection;
+    },
   },
   watch: {
     collection: {
@@ -37,7 +35,7 @@ export default {
   methods: {
     rememberCard(value) {
       this.shuffleWays();
-      this.$emit('rememberCard', value);
+      this.$store.dispatch('rememberCard', value);
     },
     shuffleWays() {
       const cloneWays = [...this.collection];
