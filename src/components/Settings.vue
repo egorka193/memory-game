@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import Modal from './Modal.vue';
 import Select from './Select.vue';
 // eslint-disable-next-line import/extensions
@@ -50,29 +51,60 @@ export default {
     },
   },
   emits: ['closeSettings', 'giveUP', 'apply'],
-  data() {
-    return {
-      collectionName: this.currentCollectionName,
-      collection: Object.keys(collectionLabel).map((item) => ({
+  setup(props, context) {
+    const collectionName = ref(props.currentCollectionName);
+    const collection = ref(
+      Object.keys(collectionLabel).map((item) => ({
         value: item,
         label: collectionLabel[item],
       })),
+    );
+
+    const closeSettings = () => {
+      context.emit('closeSettings');
+    };
+    const giveUP = () => {
+      context.emit('giveUP');
+    };
+    const apply = () => {
+      context.emit('apply', collectionName.value);
+    };
+    const changeValue = (value) => {
+      collectionName.value = value;
+    };
+    return {
+      collectionName,
+      collection,
+      closeSettings,
+      giveUP,
+      apply,
+      changeValue,
     };
   },
-  methods: {
-    closeSettings() {
-      this.$emit('closeSettings');
-    },
-    giveUP() {
-      this.$emit('giveUP');
-    },
-    apply() {
-      this.$emit('apply', this.value);
-    },
-    changeValue(value) {
-      this.value = value;
-    },
-  },
+
+//   data() {
+//     return {
+//       collectionName: this.currentCollectionName,
+//       collection: Object.keys(collectionLabel).map((item) => ({
+//         value: item,
+//         label: collectionLabel[item],
+//       })),
+//     };
+//   },
+//   methods: {
+//     closeSettings() {
+//       this.$emit('closeSettings');
+//     },
+//     giveUP() {
+//       this.$emit('giveUP');
+//     },
+//     apply() {
+//       this.$emit('apply', this.value);
+//     },
+//     changeValue(value) {
+//       this.value = value;
+//     },
+//   },
 };
 </script>
 

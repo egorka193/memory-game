@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { computed } from 'vue';
 import Modal from './Modal.vue';
 
 export default {
@@ -33,24 +34,45 @@ export default {
     },
   },
   emits: ['restart'],
-  computed: {
-    count() {
-      return `${this.selectedCards.length}/${this.collectionLength}`;
-    },
-    modalTitle() {
-      if (this.selectedCards.length === 12) {
+  setup(props, context) {
+    const count = computed(() => `${props.selectedCards.length}/${props.collectionLength}`);
+    const modalTitle = computed(() => {
+      if (props.selectedCards.length === 12) {
         return 'YOU WIN';
       // eslint-disable-next-line no-else-return
       } else {
         return 'NICE TRY';
       }
-    },
+    });
+
+    const restart = () => {
+      context.emit('restart');
+    };
+
+    return {
+      count,
+      modalTitle,
+      restart,
+    };
   },
-  methods: {
-    restart() {
-      this.$emit('restart');
-    },
-  },
+  // computed: {
+  //   count() {
+  //     return `${this.selectedCards.length}/${this.collectionLength}`;
+  //   },
+  //   modalTitle() {
+  //     if (this.selectedCards.length === 12) {
+  //       return 'YOU WIN';
+  //     // eslint-disable-next-line no-else-return
+  //     } else {
+  //       return 'NICE TRY';
+  //     }
+  //   },
+  // },
+  // methods: {
+  //   restart() {
+  //     this.$emit('restart');
+  //   },
+  // },
 };
 </script>
 
