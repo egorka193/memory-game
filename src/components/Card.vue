@@ -19,11 +19,20 @@ export default {
     },
   },
   emits: ['chooseCard'],
-  methods: {
-    chooseCard() {
-      this.$emit('chooseCard', this.value.url);
-    },
+  setup(props, context) {
+    const chooseCard = () => {
+      context.emit('chooseCard', props.value.url);
+    };
+
+    return {
+      chooseCard,
+    };
   },
+  // methods: {
+  //   chooseCard() {
+  //     this.$emit('chooseCard', this.value.url);
+  //   },
+  // },
 };
 </script>
 

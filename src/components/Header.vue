@@ -22,6 +22,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     score: {
@@ -34,11 +35,20 @@ export default {
     },
   },
   emits: ['showSettings'],
-  methods: {
-    showSettings() {
-      this.$emit('showSettings');
-    },
+  setup(props, context) {
+    const showSettings = () => {
+      context.emit('showSettings');
+    };
+
+    return {
+      showSettings,
+    };
   },
+  // methods: {
+  //   showSettings() {
+  //     this.$emit('showSettings');
+  //   },
+  // },
 };
 </script>
 

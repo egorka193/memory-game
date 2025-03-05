@@ -30,11 +30,20 @@ export default {
     },
   },
   emits: ['close'],
-  methods: {
-    close() {
-      this.$emit('close');
-    },
+  setup(props, context) {
+    const close = () => {
+      context.emit('close');
+    };
+
+    return {
+      close,
+    };
   },
+  // methods: {
+  //   close() {
+  //     this.$emit('close');
+  //   },
+  // },
 };
 </script>
 

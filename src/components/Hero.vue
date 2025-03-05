@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import Card from './Card.vue';
 
 export default {
@@ -21,9 +22,22 @@ export default {
     },
   },
   emits: ['rememberCard'],
-  data() {
+  setup(props, context) {
+    const sortedWays = ref([]);
+
+    const shuffleWays = () => {
+      const cloneWays = [...props.collection];
+      cloneWays.sort(() => Math.random() - 0.5);
+      sortedWays.value = cloneWays;
+    };
+    const rememberCard = (value) => {
+      shuffleWays();
+      context.emit('rememberCard', value);
+    };
+
     return {
-      sortedWays: [],
+      sortedWays,
+      rememberCard,
     };
   },
   watch: {
@@ -34,17 +48,30 @@ export default {
       immediate: true,
     },
   },
-  methods: {
-    rememberCard(value) {
-      this.shuffleWays();
-      this.$emit('rememberCard', value);
-    },
-    shuffleWays() {
-      const cloneWays = [...this.collection];
-      cloneWays.sort(() => Math.random() - 0.5);
-      this.sortedWays = cloneWays;
-    },
-  },
+  // data() {
+  //   return {
+  //     sortedWays: [],
+  //   };
+  // },
+  // watch: {
+  //   collection: {
+  //     handler(newNal) {
+  //       this.sortedWays = newNal;
+  //     },
+  //     immediate: true,
+  //   },
+  // },
+  // methods: {
+  //   rememberCard(value) {
+  //     this.shuffleWays();
+  //     this.$emit('rememberCard', value);
+  //   },
+  //   shuffleWays() {
+  //     const cloneWays = [...this.collection];
+  //     cloneWays.sort(() => Math.random() - 0.5);
+  //     this.sortedWays = cloneWays;
+  //   },
+  // },
 };
 </script>
 
