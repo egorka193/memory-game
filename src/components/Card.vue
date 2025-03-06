@@ -28,11 +28,6 @@ export default {
       chooseCard,
     };
   },
-  // methods: {
-  //   chooseCard() {
-  //     this.$emit('chooseCard', this.value.url);
-  //   },
-  // },
 };
 </script>
 

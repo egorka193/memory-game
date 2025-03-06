@@ -44,11 +44,6 @@ export default {
       showSettings,
     };
   },
-  // methods: {
-  //   showSettings() {
-  //     this.$emit('showSettings');
-  //   },
-  // },
 };
 </script>
 

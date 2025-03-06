@@ -39,11 +39,6 @@ export default {
       close,
     };
   },
-  // methods: {
-  //   close() {
-  //     this.$emit('close');
-  //   },
-  // },
 };
 </script>
 

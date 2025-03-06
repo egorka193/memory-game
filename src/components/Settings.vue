@@ -81,30 +81,6 @@ export default {
       changeValue,
     };
   },
-
-//   data() {
-//     return {
-//       collectionName: this.currentCollectionName,
-//       collection: Object.keys(collectionLabel).map((item) => ({
-//         value: item,
-//         label: collectionLabel[item],
-//       })),
-//     };
-//   },
-//   methods: {
-//     closeSettings() {
-//       this.$emit('closeSettings');
-//     },
-//     giveUP() {
-//       this.$emit('giveUP');
-//     },
-//     apply() {
-//       this.$emit('apply', this.value);
-//     },
-//     changeValue(value) {
-//       this.value = value;
-//     },
-//   },
 };
 </script>
 

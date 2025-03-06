@@ -48,30 +48,6 @@ export default {
       immediate: true,
     },
   },
-  // data() {
-  //   return {
-  //     sortedWays: [],
-  //   };
-  // },
-  // watch: {
-  //   collection: {
-  //     handler(newNal) {
-  //       this.sortedWays = newNal;
-  //     },
-  //     immediate: true,
-  //   },
-  // },
-  // methods: {
-  //   rememberCard(value) {
-  //     this.shuffleWays();
-  //     this.$emit('rememberCard', value);
-  //   },
-  //   shuffleWays() {
-  //     const cloneWays = [...this.collection];
-  //     cloneWays.sort(() => Math.random() - 0.5);
-  //     this.sortedWays = cloneWays;
-  //   },
-  // },
 };
 </script>
 

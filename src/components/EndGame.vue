@@ -55,24 +55,6 @@ export default {
       restart,
     };
   },
-  // computed: {
-  //   count() {
-  //     return `${this.selectedCards.length}/${this.collectionLength}`;
-  //   },
-  //   modalTitle() {
-  //     if (this.selectedCards.length === 12) {
-  //       return 'YOU WIN';
-  //     // eslint-disable-next-line no-else-return
-  //     } else {
-  //       return 'NICE TRY';
-  //     }
-  //   },
-  // },
-  // methods: {
-  //   restart() {
-  //     this.$emit('restart');
-  //   },
-  // },
 };
 </script>
 
